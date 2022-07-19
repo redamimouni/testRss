@@ -7,37 +7,22 @@
 
 import Foundation
 
-protocol ToiletListDelegate: NSObjectProtocol {
-    func displayToiletList(toilets: [ToiletViewModel])
-    func displayError(message: String)
-}
-
 final class ToiletListPresenter {
-    weak var delegate: ToiletListDelegate?
+    private let useCase: ToiletListUseCase
 
-    func fetchToiletList() {
-        delegate?.displayToiletList(toilets: [
-            ToiletViewModel(
-                address: "11 rue griffhueles, Villejuf",
-                openingHour: "8:00/23:00",
-                isPrmFriendly: true,
-                distance: "15 Km"),
-            ToiletViewModel(
-                address: "11 rue griffhueles, Villejuf",
-                openingHour: "8:00/23:00",
-                isPrmFriendly: true,
-                distance: "15 Km"),
-            ToiletViewModel(
-                address: "11 rue griffhueles, Villejuf",
-                openingHour: "8:00/23:00",
-                isPrmFriendly: true,
-                distance: "15 Km"),
-            ToiletViewModel(
-                address: "11 rue griffhueles, Villejuf",
-                openingHour: "8:00/23:00",
-                isPrmFriendly: true,
-                distance: "15 Km")
-        ])
+    init(useCase: ToiletListUseCase) {
+        self.useCase = useCase
+    }
+
+    func fetchToiletList(completion: @escaping (Result<[ToiletViewModel], DomainError>) -> Void) {
+        useCase.execute { result in
+            switch result {
+            case .success(let toilets):
+                completion(.success(toilets.map({ $0.toViewModel() })))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
 }

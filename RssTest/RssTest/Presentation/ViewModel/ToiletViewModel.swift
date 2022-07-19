@@ -7,9 +7,20 @@
 
 import Foundation
 
-struct ToiletViewModel {
+struct ToiletViewModel: Equatable {
     let address: String
     let openingHour: String
     let isPrmFriendly: Bool
     let distance: String
+}
+
+extension Toilet {
+    func toViewModel() -> ToiletViewModel {
+        return ToiletViewModel(
+            address: address,
+            openingHour: openTime,
+            isPrmFriendly: pmrAccess,
+            distance: "Distance"
+        )
+    }
 }

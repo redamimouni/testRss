@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ToiletListViewController: UIViewController, Coordinated, ToiletListDelegate {
+final class ToiletListViewController: UIViewController, Coordinated {
     // MARK: - Data
 
     internal var toiletListViewModel: [ToiletViewModel] = []
@@ -41,22 +41,17 @@ class ToiletListViewController: UIViewController, Coordinated, ToiletListDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         setupInterface()
-        presenter.delegate = self
-        presenter.fetchToiletList()
-    }
+        presenter.fetchToiletList { [weak self] result in
+            switch result {
+            case .success(let toiletList):
+                self?.toiletListViewModel = toiletList
+                self?.tableView.reloadData()
+            default: break
 
-    // MARK: - ToiletListDelegate
-
-    func displayToiletList(toilets: [ToiletViewModel]) {
-        toiletListViewModel = toilets
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+            }
         }
     }
 
-    func displayError(message: String) {
-
-    }
 
     // MARK: - Private
 

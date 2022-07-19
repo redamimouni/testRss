@@ -12,12 +12,16 @@
 		AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024782886984C00814602 /* ToiletListViewController.swift */; };
 		AB80247E2886984D00814602 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB80247D2886984D00814602 /* Assets.xcassets */; };
 		AB8024812886984D00814602 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB80247F2886984D00814602 /* LaunchScreen.storyboard */; };
-		AB80248C2886984D00814602 /* RssTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80248B2886984D00814602 /* RssTestTests.swift */; };
+		AB80248C2886984D00814602 /* ToiletListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80248B2886984D00814602 /* ToiletListPresenterTests.swift */; };
 		AB8024A728869AD800814602 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024A628869AD800814602 /* Coordinator.swift */; };
 		AB8024AD28869E9E00814602 /* ToiletListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024AC28869E9E00814602 /* ToiletListPresenter.swift */; };
 		AB8024AF2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024AE2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift */; };
 		AB8024B12886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024B02886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift */; };
 		AB8024B42886C96800814602 /* ToiletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024B32886C96800814602 /* ToiletViewModel.swift */; };
+		AB8024BA2886EF6300814602 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024B92886EF6300814602 /* DomainError.swift */; };
+		AB8024BD2886F2B400814602 /* ToiletListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024BC2886F2B400814602 /* ToiletListUseCase.swift */; };
+		AB8024C02886F32C00814602 /* Toilet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024BF2886F32C00814602 /* Toilet.swift */; };
+		AB8024C22886F80900814602 /* ToiletListUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024C12886F80900814602 /* ToiletListUseCaseMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,12 +43,16 @@
 		AB8024802886984D00814602 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB8024822886984D00814602 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB8024872886984D00814602 /* RssTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RssTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB80248B2886984D00814602 /* RssTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssTestTests.swift; sourceTree = "<group>"; };
+		AB80248B2886984D00814602 /* ToiletListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListPresenterTests.swift; sourceTree = "<group>"; };
 		AB8024A628869AD800814602 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AB8024AC28869E9E00814602 /* ToiletListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListPresenter.swift; sourceTree = "<group>"; };
 		AB8024AE2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToiletListViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		AB8024B02886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToiletListViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		AB8024B32886C96800814602 /* ToiletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletViewModel.swift; sourceTree = "<group>"; };
+		AB8024B92886EF6300814602 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		AB8024BC2886F2B400814602 /* ToiletListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListUseCase.swift; sourceTree = "<group>"; };
+		AB8024BF2886F32C00814602 /* Toilet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toilet.swift; sourceTree = "<group>"; };
+		AB8024C12886F80900814602 /* ToiletListUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListUseCaseMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 			children = (
 				AB8024A428869AC200814602 /* View */,
 				AB8024AA28869E7800814602 /* Presentation */,
+				AB8024B72886EF3800814602 /* Domain */,
 				AB8024742886984C00814602 /* AppDelegate.swift */,
 				AB8024762886984C00814602 /* SceneDelegate.swift */,
 				AB80247D2886984D00814602 /* Assets.xcassets */,
@@ -100,7 +109,7 @@
 		AB80248A2886984D00814602 /* RssTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB80248B2886984D00814602 /* RssTestTests.swift */,
+				AB8024B52886D20F00814602 /* Presenters */,
 			);
 			path = RssTestTests;
 			sourceTree = "<group>";
@@ -155,6 +164,57 @@
 				AB8024B32886C96800814602 /* ToiletViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AB8024B52886D20F00814602 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024B62886EEC000814602 /* Mocks */,
+				AB80248B2886984D00814602 /* ToiletListPresenterTests.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		AB8024B62886EEC000814602 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024C12886F80900814602 /* ToiletListUseCaseMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		AB8024B72886EF3800814602 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024BE2886F32000814602 /* Entities */,
+				AB8024BB2886F29600814602 /* UseCase */,
+				AB8024B82886EF5400814602 /* Error */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AB8024B82886EF5400814602 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024B92886EF6300814602 /* DomainError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		AB8024BB2886F29600814602 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024BC2886F2B400814602 /* ToiletListUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		AB8024BE2886F32000814602 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024BF2886F32C00814602 /* Toilet.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,13 +317,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB8024BD2886F2B400814602 /* ToiletListUseCase.swift in Sources */,
 				AB8024AD28869E9E00814602 /* ToiletListPresenter.swift in Sources */,
 				AB8024B12886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift in Sources */,
 				AB8024A728869AD800814602 /* Coordinator.swift in Sources */,
 				AB8024AF2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift in Sources */,
 				AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */,
+				AB8024C02886F32C00814602 /* Toilet.swift in Sources */,
 				AB8024B42886C96800814602 /* ToiletViewModel.swift in Sources */,
 				AB8024752886984C00814602 /* AppDelegate.swift in Sources */,
+				AB8024BA2886EF6300814602 /* DomainError.swift in Sources */,
 				AB8024772886984C00814602 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +335,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB80248C2886984D00814602 /* RssTestTests.swift in Sources */,
+				AB8024C22886F80900814602 /* ToiletListUseCaseMock.swift in Sources */,
+				AB80248C2886984D00814602 /* ToiletListPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
