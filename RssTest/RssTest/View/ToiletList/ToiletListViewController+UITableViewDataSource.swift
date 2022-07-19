@@ -10,13 +10,13 @@ import UIKit
 
 extension ToiletListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return toiletListViewModel.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
+        let viewModel = toiletListViewModel[indexPath.row]
+        cell.textLabel?.text = viewModel.address
         return cell
     }
-
-
 }

@@ -17,6 +17,7 @@
 		AB8024AD28869E9E00814602 /* ToiletListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024AC28869E9E00814602 /* ToiletListPresenter.swift */; };
 		AB8024AF2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024AE2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift */; };
 		AB8024B12886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024B02886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift */; };
+		AB8024B42886C96800814602 /* ToiletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024B32886C96800814602 /* ToiletViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		AB8024AC28869E9E00814602 /* ToiletListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListPresenter.swift; sourceTree = "<group>"; };
 		AB8024AE2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToiletListViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		AB8024B02886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToiletListViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		AB8024B32886C96800814602 /* ToiletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		AB8024AA28869E7800814602 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				AB8024B22886C92600814602 /* ViewModel */,
 				AB8024AB28869E8D00814602 /* Presenter */,
 			);
 			path = Presentation;
@@ -144,6 +147,14 @@
 				AB8024AC28869E9E00814602 /* ToiletListPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AB8024B22886C92600814602 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024B32886C96800814602 /* ToiletViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +262,7 @@
 				AB8024A728869AD800814602 /* Coordinator.swift in Sources */,
 				AB8024AF2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift in Sources */,
 				AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */,
+				AB8024B42886C96800814602 /* ToiletViewModel.swift in Sources */,
 				AB8024752886984C00814602 /* AppDelegate.swift in Sources */,
 				AB8024772886984C00814602 /* SceneDelegate.swift in Sources */,
 			);

@@ -7,7 +7,10 @@
 
 import UIKit
 
-class ToiletListViewController: UIViewController, Coordinated {
+class ToiletListViewController: UIViewController, Coordinated, ToiletListDelegate {
+    // MARK: - Data
+
+    internal var toiletListViewModel: [ToiletViewModel] = []
 
     // MARK: - Subviews
 
@@ -37,7 +40,35 @@ class ToiletListViewController: UIViewController, Coordinated {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupInterface()
+        presenter.delegate = self
+        presenter.fetchToiletList()
+    }
+
+    // MARK: - ToiletListDelegate
+
+    func displayToiletList(toilets: [ToiletViewModel]) {
+        toiletListViewModel = toilets
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+    func displayError(message: String) {
+
+    }
+
+    // MARK: - Private
+
+    private func setupInterface() {
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        view.layoutIfNeeded()
     }
 
     private func createTableView() -> UITableView {
