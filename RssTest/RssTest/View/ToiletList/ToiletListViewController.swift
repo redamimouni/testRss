@@ -42,12 +42,14 @@ final class ToiletListViewController: UIViewController, Coordinated {
         super.viewDidLoad()
         setupInterface()
         presenter.fetchToiletList { [weak self] result in
-            switch result {
-            case .success(let toiletList):
-                self?.toiletListViewModel = toiletList
-                self?.tableView.reloadData()
-            default: break
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let toiletList):
+                    self?.toiletListViewModel = toiletList
+                    self?.tableView.reloadData()
+                default: break
 
+                }
             }
         }
     }

@@ -22,6 +22,12 @@
 		AB8024BD2886F2B400814602 /* ToiletListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024BC2886F2B400814602 /* ToiletListUseCase.swift */; };
 		AB8024C02886F32C00814602 /* Toilet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024BF2886F32C00814602 /* Toilet.swift */; };
 		AB8024C22886F80900814602 /* ToiletListUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024C12886F80900814602 /* ToiletListUseCaseMock.swift */; };
+		AB8024C62886FC5C00814602 /* ToiletListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024C52886FC5C00814602 /* ToiletListRepository.swift */; };
+		AB8024CA2886FCD000814602 /* ToiletDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024C92886FCD000814602 /* ToiletDTO.swift */; };
+		AB8024CD2886FE2300814602 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024CC2886FE2300814602 /* NetworkError.swift */; };
+		AB8024D0288704FC00814602 /* ToiletListRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024CF288704FC00814602 /* ToiletListRepositoryImpl.swift */; };
+		AB894F4128890C3D00198919 /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB894F4028890C3D00198919 /* APIEndPoints.swift */; };
+		AB894F4328890CAE00198919 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB894F4228890CAE00198919 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		AB8024BC2886F2B400814602 /* ToiletListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListUseCase.swift; sourceTree = "<group>"; };
 		AB8024BF2886F32C00814602 /* Toilet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toilet.swift; sourceTree = "<group>"; };
 		AB8024C12886F80900814602 /* ToiletListUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListUseCaseMock.swift; sourceTree = "<group>"; };
+		AB8024C52886FC5C00814602 /* ToiletListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListRepository.swift; sourceTree = "<group>"; };
+		AB8024C92886FCD000814602 /* ToiletDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletDTO.swift; sourceTree = "<group>"; };
+		AB8024CC2886FE2300814602 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		AB8024CF288704FC00814602 /* ToiletListRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListRepositoryImpl.swift; sourceTree = "<group>"; };
+		AB894F4028890C3D00198919 /* APIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
+		AB894F4228890CAE00198919 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,7 @@
 				AB8024A428869AC200814602 /* View */,
 				AB8024AA28869E7800814602 /* Presentation */,
 				AB8024B72886EF3800814602 /* Domain */,
+				AB8024C82886FCB400814602 /* Data */,
 				AB8024742886984C00814602 /* AppDelegate.swift */,
 				AB8024762886984C00814602 /* SceneDelegate.swift */,
 				AB80247D2886984D00814602 /* Assets.xcassets */,
@@ -186,6 +199,7 @@
 		AB8024B72886EF3800814602 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AB8024C42886FC4700814602 /* Interfaces */,
 				AB8024BE2886F32000814602 /* Entities */,
 				AB8024BB2886F29600814602 /* UseCase */,
 				AB8024B82886EF5400814602 /* Error */,
@@ -215,6 +229,66 @@
 				AB8024BF2886F32C00814602 /* Toilet.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		AB8024C32886FC3500814602 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024C52886FC5C00814602 /* ToiletListRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		AB8024C42886FC4700814602 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024C32886FC3500814602 /* Repository */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		AB8024C72886FCA100814602 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024C92886FCD000814602 /* ToiletDTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		AB8024C82886FCB400814602 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AB894F3F28890B8500198919 /* Network */,
+				AB8024CE288704E900814602 /* Repositories */,
+				AB8024CB2886FDE800814602 /* Common */,
+				AB8024C72886FCA100814602 /* DataMapping */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AB8024CB2886FDE800814602 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024CC2886FE2300814602 /* NetworkError.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AB8024CE288704E900814602 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				AB8024CF288704FC00814602 /* ToiletListRepositoryImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AB894F3F28890B8500198919 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AB894F4028890C3D00198919 /* APIEndPoints.swift */,
+				AB894F4228890CAE00198919 /* Utilities.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,12 +392,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB8024BD2886F2B400814602 /* ToiletListUseCase.swift in Sources */,
+				AB8024CD2886FE2300814602 /* NetworkError.swift in Sources */,
 				AB8024AD28869E9E00814602 /* ToiletListPresenter.swift in Sources */,
+				AB8024C62886FC5C00814602 /* ToiletListRepository.swift in Sources */,
+				AB8024CA2886FCD000814602 /* ToiletDTO.swift in Sources */,
+				AB8024D0288704FC00814602 /* ToiletListRepositoryImpl.swift in Sources */,
 				AB8024B12886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift in Sources */,
 				AB8024A728869AD800814602 /* Coordinator.swift in Sources */,
 				AB8024AF2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift in Sources */,
 				AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */,
+				AB894F4328890CAE00198919 /* Utilities.swift in Sources */,
 				AB8024C02886F32C00814602 /* Toilet.swift in Sources */,
+				AB894F4128890C3D00198919 /* APIEndPoints.swift in Sources */,
 				AB8024B42886C96800814602 /* ToiletViewModel.swift in Sources */,
 				AB8024752886984C00814602 /* AppDelegate.swift in Sources */,
 				AB8024BA2886EF6300814602 /* DomainError.swift in Sources */,

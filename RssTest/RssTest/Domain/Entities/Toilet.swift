@@ -14,3 +14,14 @@ struct Toilet {
     let pmrAccess: Bool
     let geolocalisation: CLLocationCoordinate2D
 }
+
+extension ToiletDTO {
+    func toDomain() -> Toilet {
+        return Toilet(
+            address: adresse,
+            openTime: horaire.rawValue,
+            pmrAccess: accesPmr.boolean,
+            geolocalisation: CLLocationCoordinate2D(latitude: geoPoint2D[0], longitude:  geoPoint2D[1])
+        )
+    }
+}
