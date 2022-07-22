@@ -28,6 +28,9 @@
 		AB8024D0288704FC00814602 /* ToiletListRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024CF288704FC00814602 /* ToiletListRepositoryImpl.swift */; };
 		AB894F4128890C3D00198919 /* APIEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB894F4028890C3D00198919 /* APIEndPoints.swift */; };
 		AB894F4328890CAE00198919 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB894F4228890CAE00198919 /* Utilities.swift */; };
+		AB894F452889145600198919 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB894F442889145600198919 /* LocationManager.swift */; };
+		ABB46AF4288AFF91005471E5 /* ToiletListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB46AF3288AFF91005471E5 /* ToiletListUseCaseTests.swift */; };
+		ABB46AF8288B0032005471E5 /* ToiletListRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB46AF7288B0032005471E5 /* ToiletListRepositoryMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		AB8024CF288704FC00814602 /* ToiletListRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListRepositoryImpl.swift; sourceTree = "<group>"; };
 		AB894F4028890C3D00198919 /* APIEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoints.swift; sourceTree = "<group>"; };
 		AB894F4228890CAE00198919 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		AB894F442889145600198919 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		ABB46AF3288AFF91005471E5 /* ToiletListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListUseCaseTests.swift; sourceTree = "<group>"; };
+		ABB46AF7288B0032005471E5 /* ToiletListRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletListRepositoryMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 		AB80248A2886984D00814602 /* RssTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				ABB46AF2288AFF6F005471E5 /* UseCase */,
 				AB8024B52886D20F00814602 /* Presenters */,
 			);
 			path = RssTestTests;
@@ -167,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				AB8024AC28869E9E00814602 /* ToiletListPresenter.swift */,
+				AB894F442889145600198919 /* LocationManager.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -291,6 +299,23 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		ABB46AF2288AFF6F005471E5 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				ABB46AF6288B0020005471E5 /* Mocks */,
+				ABB46AF3288AFF91005471E5 /* ToiletListUseCaseTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		ABB46AF6288B0020005471E5 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				ABB46AF7288B0032005471E5 /* ToiletListRepositoryMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -399,6 +424,7 @@
 				AB8024D0288704FC00814602 /* ToiletListRepositoryImpl.swift in Sources */,
 				AB8024B12886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift in Sources */,
 				AB8024A728869AD800814602 /* Coordinator.swift in Sources */,
+				AB894F452889145600198919 /* LocationManager.swift in Sources */,
 				AB8024AF2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift in Sources */,
 				AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */,
 				AB894F4328890CAE00198919 /* Utilities.swift in Sources */,
@@ -415,7 +441,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB46AF8288B0032005471E5 /* ToiletListRepositoryMock.swift in Sources */,
 				AB8024C22886F80900814602 /* ToiletListUseCaseMock.swift in Sources */,
+				ABB46AF4288AFF91005471E5 /* ToiletListUseCaseTests.swift in Sources */,
 				AB80248C2886984D00814602 /* ToiletListPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
