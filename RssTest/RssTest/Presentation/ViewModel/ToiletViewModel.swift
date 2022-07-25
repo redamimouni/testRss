@@ -18,7 +18,7 @@ extension Toilet {
     func toViewModel() -> ToiletViewModel {
         return ToiletViewModel(
             address: address,
-            openingHour: openTime,
+            openingHour: "Ouverture: \(openTime)",
             isPrmFriendly: pmrAccess,
             distance: "Distance"
         )

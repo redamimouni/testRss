@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB7ED87A288E7F5C00C2805C /* ToiletViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ED879288E7F5C00C2805C /* ToiletViewCell.swift */; };
+		AB7ED87D288E812400C2805C /* CGFloat+Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ED87C288E812400C2805C /* CGFloat+Paddings.swift */; };
 		AB8024752886984C00814602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024742886984C00814602 /* AppDelegate.swift */; };
 		AB8024772886984C00814602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024762886984C00814602 /* SceneDelegate.swift */; };
 		AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024782886984C00814602 /* ToiletListViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB7ED879288E7F5C00C2805C /* ToiletViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletViewCell.swift; sourceTree = "<group>"; };
+		AB7ED87C288E812400C2805C /* CGFloat+Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Paddings.swift"; sourceTree = "<group>"; };
 		AB8024712886984C00814602 /* RssTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8024742886984C00814602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB8024762886984C00814602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB7ED87B288E810A00C2805C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AB7ED87C288E812400C2805C /* CGFloat+Paddings.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		AB8024682886984C00814602 = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +140,7 @@
 		AB80248A2886984D00814602 /* RssTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				ABB46AF2288AFF6F005471E5 /* UseCase */,
+				ABB46AF2288AFF6F005471E5 /* UseCases */,
 				AB8024B52886D20F00814602 /* Presenters */,
 			);
 			path = RssTestTests;
@@ -137,6 +149,7 @@
 		AB8024A428869AC200814602 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB7ED87B288E810A00C2805C /* Utilities */,
 				AB8024A828869DC700814602 /* ToiletList */,
 				AB8024A528869AC900814602 /* Navigation */,
 			);
@@ -157,6 +170,7 @@
 				AB8024782886984C00814602 /* ToiletListViewController.swift */,
 				AB8024B02886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift */,
 				AB8024AE2886AEE600814602 /* ToiletListViewController+UITableViewDelegate.swift */,
+				AB7ED879288E7F5C00C2805C /* ToiletViewCell.swift */,
 			);
 			path = ToiletList;
 			sourceTree = "<group>";
@@ -299,13 +313,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		ABB46AF2288AFF6F005471E5 /* UseCase */ = {
+		ABB46AF2288AFF6F005471E5 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
 				ABB46AF6288B0020005471E5 /* Mocks */,
 				ABB46AF3288AFF91005471E5 /* ToiletListUseCaseTests.swift */,
 			);
-			path = UseCase;
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		ABB46AF6288B0020005471E5 /* Mocks */ = {
@@ -421,6 +435,7 @@
 				AB8024AD28869E9E00814602 /* ToiletListPresenter.swift in Sources */,
 				AB8024C62886FC5C00814602 /* ToiletListRepository.swift in Sources */,
 				AB8024CA2886FCD000814602 /* ToiletDTO.swift in Sources */,
+				AB7ED87A288E7F5C00C2805C /* ToiletViewCell.swift in Sources */,
 				AB8024D0288704FC00814602 /* ToiletListRepositoryImpl.swift in Sources */,
 				AB8024B12886AEFC00814602 /* ToiletListViewController+UITableViewDataSource.swift in Sources */,
 				AB8024A728869AD800814602 /* Coordinator.swift in Sources */,
@@ -429,6 +444,7 @@
 				AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */,
 				AB894F4328890CAE00198919 /* Utilities.swift in Sources */,
 				AB8024C02886F32C00814602 /* Toilet.swift in Sources */,
+				AB7ED87D288E812400C2805C /* CGFloat+Paddings.swift in Sources */,
 				AB894F4128890C3D00198919 /* APIEndPoints.swift in Sources */,
 				AB8024B42886C96800814602 /* ToiletViewModel.swift in Sources */,
 				AB8024752886984C00814602 /* AppDelegate.swift in Sources */,

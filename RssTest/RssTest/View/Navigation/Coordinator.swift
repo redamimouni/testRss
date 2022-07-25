@@ -32,4 +32,8 @@ final class MainCoordinator: Coordinator {
         viewController.bindWith(coordinator: self)
         navigationController.pushViewController(viewController, animated: false)
     }
+
+    func displayToiletDetailView() {
+        
+    }
 }

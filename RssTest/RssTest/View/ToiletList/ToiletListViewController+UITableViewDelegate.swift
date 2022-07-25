@@ -9,5 +9,8 @@ import Foundation
 import UIKit
 
 extension ToiletListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.displayToiletDetailView()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

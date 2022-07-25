@@ -38,13 +38,13 @@ class ToiletListPresenterTests: XCTestCase {
                 XCTAssertEqual(viewModels, [
                     ToiletViewModel(
                         address: "JARDIN DE LA ZAC D'ALESIA",
-                        openingHour: "Voir fiche équipement",
+                        openingHour: "Ouverture: Voir fiche équipement",
                         isPrmFriendly: true,
                         distance: "Distance"
                     ),
                     ToiletViewModel(
                         address: "QUAI BRANLY",
-                        openingHour: "24 h / 24",
+                        openingHour: "Ouverture: 24 h / 24",
                         isPrmFriendly: false,
                         distance: "Distance"
                     )

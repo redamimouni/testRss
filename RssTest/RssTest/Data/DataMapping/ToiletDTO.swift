@@ -72,7 +72,10 @@ enum AccesPmr: String, Codable {
     case oui = "Oui"
 
     var boolean: Bool {
-        return (self.rawValue as NSString).boolValue
+        switch self {
+        case .non: return false
+        case .oui: return true
+        }
     }
 }
 
