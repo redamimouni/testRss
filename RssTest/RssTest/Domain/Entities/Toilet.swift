@@ -29,7 +29,7 @@ extension ToiletDTO {
             address: adresse,
             openTime: horaire.rawValue,
             pmrAccess: accesPmr.boolean,
-            geolocalisation: CLLocation(latitude: geoPoint2D[0], longitude: geoPoint2D[1] * -1) // To fix longitude bug in API
+            geolocalisation: CLLocation(latitude: geoPoint2D[0], longitude: geoPoint2D[1])
         )
     }
 }
