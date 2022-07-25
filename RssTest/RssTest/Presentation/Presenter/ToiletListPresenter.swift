@@ -33,6 +33,21 @@ final class ToiletListPresenter {
         }
     }
 
+    func filter(with filter: FilterStatus, viewModelList: [ToiletViewModel], completion: @escaping ([ToiletViewModel])-> Void) {
+        switch filter {
+        case .all:
+            completion(viewModelList)
+        case .prm:
+            completion(viewModelList.filter {
+                $0.isPrmFriendly
+            })
+        case .nonPrm:
+            completion(viewModelList.filter {
+                !$0.isPrmFriendly
+            })
+        }
+    }
+
     private func handleLocationStatus(locationStatus: LocationResult, toilets: [Toilet], completion: @escaping (Result<[ToiletViewModel], DomainError>) -> Void) {
         switch locationStatus {
         case .locationAvailable(location: let location):

@@ -10,8 +10,8 @@ import UIKit
 final class ToiletListViewController: UIViewController, Coordinated {
     // MARK: - Data
 
-    internal var toiletListViewModel: [ToiletViewModel] = []
-    internal var filteredListViewModel: [ToiletViewModel] = []
+    internal var toiletListViewModelToDisplay: [ToiletViewModel] = []
+    private var allToiletListViewModel: [ToiletViewModel] = []
     private var filterStatus = FilterStatus.all
 
     // MARK: - Subviews
@@ -52,8 +52,9 @@ final class ToiletListViewController: UIViewController, Coordinated {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let toiletList):
-                    self?.toiletListViewModel = toiletList
-                    self?.updateData()
+                    self?.allToiletListViewModel = toiletList
+                    self?.toiletListViewModelToDisplay = toiletList
+                    self?.tableView.reloadData()
                 case .failure(let error):
                     print("Fetch data has failed with error: \(error)")
                 }
@@ -87,23 +88,10 @@ final class ToiletListViewController: UIViewController, Coordinated {
             filterStatus = .nonPrm
         }
         filterButton.title = filterStatus.rawValue
-        updateData()
-    }
-
-    private func updateData() {
-        switch filterStatus {
-        case .all:
-            filteredListViewModel = toiletListViewModel
-        case .prm:
-            filteredListViewModel = toiletListViewModel.filter {
-                $0.isPrmFriendly
-            }
-        case .nonPrm:
-            filteredListViewModel = toiletListViewModel.filter {
-                !$0.isPrmFriendly
-            }
+        presenter.filter(with: filterStatus, viewModelList: allToiletListViewModel) { [weak self] filterArray in
+            self?.toiletListViewModelToDisplay = filterArray
+            self?.tableView.reloadData()
         }
-        tableView.reloadData()
     }
 
     private func createTableView() -> UITableView {

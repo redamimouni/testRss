@@ -10,12 +10,12 @@ import UIKit
 
 extension ToiletListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredListViewModel.count
+        return toiletListViewModelToDisplay.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath) as! ToiletViewCell
-        let viewModel = filteredListViewModel[indexPath.row]
+        let viewModel = toiletListViewModelToDisplay[indexPath.row]
         cell.fill(with: viewModel)
         return cell
     }
