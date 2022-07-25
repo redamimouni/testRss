@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB7ED87A288E7F5C00C2805C /* ToiletViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ED879288E7F5C00C2805C /* ToiletViewCell.swift */; };
 		AB7ED87D288E812400C2805C /* CGFloat+Paddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ED87C288E812400C2805C /* CGFloat+Paddings.swift */; };
+		AB7ED87F288ED00600C2805C /* LocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7ED87E288ED00600C2805C /* LocationManagerMock.swift */; };
 		AB8024752886984C00814602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024742886984C00814602 /* AppDelegate.swift */; };
 		AB8024772886984C00814602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024762886984C00814602 /* SceneDelegate.swift */; };
 		AB8024792886984C00814602 /* ToiletListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8024782886984C00814602 /* ToiletListViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		AB7ED879288E7F5C00C2805C /* ToiletViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletViewCell.swift; sourceTree = "<group>"; };
 		AB7ED87C288E812400C2805C /* CGFloat+Paddings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Paddings.swift"; sourceTree = "<group>"; };
+		AB7ED87E288ED00600C2805C /* LocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerMock.swift; sourceTree = "<group>"; };
 		AB8024712886984C00814602 /* RssTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RssTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB8024742886984C00814602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB8024762886984C00814602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				AB8024C12886F80900814602 /* ToiletListUseCaseMock.swift */,
+				AB7ED87E288ED00600C2805C /* LocationManagerMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 			files = (
 				ABB46AF8288B0032005471E5 /* ToiletListRepositoryMock.swift in Sources */,
 				AB8024C22886F80900814602 /* ToiletListUseCaseMock.swift in Sources */,
+				AB7ED87F288ED00600C2805C /* LocationManagerMock.swift in Sources */,
 				ABB46AF4288AFF91005471E5 /* ToiletListUseCaseTests.swift in Sources */,
 				AB80248C2886984D00814602 /* ToiletListPresenterTests.swift in Sources */,
 			);

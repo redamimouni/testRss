@@ -10,7 +10,11 @@ import CoreLocation
 
 typealias LocateMeCallback = (_ location: LocationResult) -> Void
 
-class LocationManager: NSObject {
+protocol LocationManager {
+    func getActualLocation(callback: @escaping LocateMeCallback)
+}
+
+class LocationManagerImpl: NSObject, LocationManager {
 
     private var lastLocation: CLLocation?
 
@@ -35,8 +39,7 @@ class LocationManager: NSObject {
 
     // MARK: Public
 
-    func getActualLocation(distanceFilter: CLLocationDistance = 500, callback: @escaping LocateMeCallback) {
-        locationManager.distanceFilter = distanceFilter
+    func getActualLocation(callback: @escaping LocateMeCallback) {
         locationCallback = callback
         if let historyLocation = lastLocation {
             callback(.locationAvailable(location: historyLocation))
@@ -69,7 +72,7 @@ class LocationManager: NSObject {
     }
 }
 
-extension LocationManager: CLLocationManagerDelegate {
+extension LocationManagerImpl: CLLocationManagerDelegate {
     func locationManager(
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]
