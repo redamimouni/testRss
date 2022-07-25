@@ -36,8 +36,8 @@ class LocationManager: NSObject {
     // MARK: Public
 
     func getActualLocation(distanceFilter: CLLocationDistance = 500, callback: @escaping LocateMeCallback) {
-        self.locationManager.distanceFilter = distanceFilter
-        self.locationCallback = callback
+        locationManager.distanceFilter = distanceFilter
+        locationCallback = callback
         if let historyLocation = lastLocation {
             callback(.locationAvailable(location: historyLocation))
         } else {
@@ -54,11 +54,11 @@ class LocationManager: NSObject {
             locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             print("Fail permission to get current location of user")
-            self.locationCallback?(.locationUnavailable)
+            locationCallback?(.locationUnavailable)
         case .authorizedWhenInUse, .authorizedAlways:
             enableMyWhenInUseFeatures()
         default:
-            self.locationCallback?(.locationUnavailable)
+            locationCallback?(.locationUnavailable)
         }
     }
 
@@ -76,7 +76,7 @@ extension LocationManager: CLLocationManagerDelegate {
     ) {
         guard let location = locations.last else { return }
         lastLocation = location
-        self.locationCallback?(.locationAvailable(location: location))
+        locationCallback?(.locationAvailable(location: location))
     }
 
     func locationManager(
@@ -84,7 +84,7 @@ extension LocationManager: CLLocationManagerDelegate {
         didFailWithError error: Error
     ) {
         print(error.localizedDescription)
-        self.locationCallback?(.locationUnavailable)
+        locationCallback?(.locationUnavailable)
     }
 }
 

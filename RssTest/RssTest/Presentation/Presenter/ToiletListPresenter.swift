@@ -38,7 +38,7 @@ final class ToiletListPresenter {
         case .locationAvailable(location: let location):
             completion(.success(toilets.map({ $0.toViewModel(with: location) })))
         case .locationUnavailable:
-            completion(.failure(.locationError))
+            completion(.success(toilets.map({ $0.toViewModel(with: nil) })))
         }
     }
 }

@@ -42,13 +42,13 @@ class ToiletListPresenterTests: XCTestCase {
                         address: "JARDIN DE LA ZAC D'ALESIA",
                         openingHour: "Ouverture: Voir fiche équipement",
                         isPrmFriendly: true,
-                        distance: "Distance"
+                        distance: "Distance inconnu"
                     ),
                     ToiletViewModel(
                         address: "QUAI BRANLY",
                         openingHour: "Ouverture: 24 h / 24",
                         isPrmFriendly: false,
-                        distance: "Distance"
+                        distance: "Distance inconnu"
                     )
                 ])
             case .failure(let error):
