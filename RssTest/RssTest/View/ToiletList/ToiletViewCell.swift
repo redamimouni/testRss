@@ -11,6 +11,12 @@ import UIKit
 class ToiletViewCell: UITableViewCell {
     // MARK: - Subviews
 
+    var distance: String? {
+        didSet {
+            distanceLabel.text = distance
+        }
+    }
+
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,6 +27,14 @@ class ToiletViewCell: UITableViewCell {
     }()
 
     private lazy var openingHourLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 13)
+        return label
+    }()
+
+    private lazy var distanceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
@@ -43,6 +57,7 @@ class ToiletViewCell: UITableViewCell {
         contentView.addSubview(addressLabel)
         contentView.addSubview(openingHourLabel)
         contentView.addSubview(isAccessiblePrmImage)
+        contentView.addSubview(distanceLabel)
         setConstraints()
     }
 
@@ -62,6 +77,7 @@ class ToiletViewCell: UITableViewCell {
     private func resetCell() {
         addressLabel.text = ""
         openingHourLabel.text = ""
+        distanceLabel.text = ""
         isAccessiblePrmImage.isHidden = true
     }
 
@@ -70,6 +86,7 @@ class ToiletViewCell: UITableViewCell {
     func fill(with viewModel: ToiletViewModel) {
         addressLabel.text = viewModel.address
         openingHourLabel.text = viewModel.openingHour
+        distanceLabel.text = viewModel.distance
         isAccessiblePrmImage.isHidden = !viewModel.isPrmFriendly
     }
 
@@ -84,7 +101,10 @@ class ToiletViewCell: UITableViewCell {
 
             openingHourLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: .paddingSmall),
             openingHourLabel.leadingAnchor.constraint(equalTo: addressLabel.leadingAnchor),
-            openingHourLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.padding),
+
+            distanceLabel.topAnchor.constraint(equalTo: openingHourLabel.bottomAnchor, constant: .paddingSmall),
+            distanceLabel.leadingAnchor.constraint(equalTo: openingHourLabel.leadingAnchor),
+            distanceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.padding),
 
             isAccessiblePrmImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.padding),
             isAccessiblePrmImage.widthAnchor.constraint(equalToConstant: 20),

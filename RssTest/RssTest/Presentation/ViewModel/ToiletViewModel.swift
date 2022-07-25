@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct ToiletViewModel: Equatable {
     let address: String
@@ -15,12 +16,25 @@ struct ToiletViewModel: Equatable {
 }
 
 extension Toilet {
-    func toViewModel() -> ToiletViewModel {
+    func toViewModel(with location: CLLocation?) -> ToiletViewModel {
         return ToiletViewModel(
             address: address,
             openingHour: "Ouverture: \(openTime)",
             isPrmFriendly: pmrAccess,
-            distance: "Distance"
+            distance: calculateDistanceFrom(toilet: location)
         )
+    }
+
+    private func calculateDistanceFrom(toilet location: CLLocation?) -> String {
+        if let distance = location?.distance(from: geolocalisation) {
+            var distanceString: String
+            if distance > 999 {
+                distanceString = "\(String(format:"%.02f", distance / 1000)) km"
+            } else {
+                distanceString = "\(String(format:"%.02f", distance)) m"
+            }
+            return "Distance: \(distanceString)"
+        }
+        return "Distance inconnu"
     }
 }

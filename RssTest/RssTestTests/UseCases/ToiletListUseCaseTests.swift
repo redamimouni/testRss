@@ -40,9 +40,9 @@ class ToiletListUseCaseTests: XCTestCase {
             address: "1  AVENUE RENE COTY",
             openTime: "24 h / 24",
             pmrAccess: false,
-            geolocalisation: CLLocationCoordinate2D.init(
-                latitude: CLLocationDegrees.init(48.83313899250652),
-                longitude: CLLocationDegrees.init(2.332917144300073)))
+            geolocalisation: CLLocation(
+                latitude: 48.83313899250652,
+                longitude: -2.332917144300073))
         ]
 
         // When

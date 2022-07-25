@@ -9,6 +9,7 @@ import Foundation
 
 final class ToiletListPresenter {
     private let useCase: ToiletListUseCase
+    private let location = LocationManager()
 
     init(useCase: ToiletListUseCase) {
         self.useCase = useCase
@@ -18,7 +19,9 @@ final class ToiletListPresenter {
         useCase.execute { result in
             switch result {
             case .success(let toilets):
-                completion(.success(toilets.map({ $0.toViewModel() })))
+                self.location.getActualLocation { location in
+                    completion(.success(toilets.map({ $0.toViewModel(with: location) })))
+                }
             case .failure(let error):
                 completion(.failure(error))
             }

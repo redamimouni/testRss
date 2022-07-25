@@ -19,13 +19,13 @@ class ToiletListPresenterTests: XCTestCase {
                 address: "JARDIN DE LA ZAC D'ALESIA",
                 openTime: "Voir fiche équipement",
                 pmrAccess: true,
-                geolocalisation: CLLocationCoordinate2D.init(latitude: 23.1212, longitude: 32.233131)
+                geolocalisation: CLLocation(latitude: 23.1212, longitude: 32.233131)
             ),
             Toilet(
                 address: "QUAI BRANLY",
                 openTime: "24 h / 24",
                 pmrAccess: false,
-                geolocalisation: CLLocationCoordinate2D.init(latitude: 23.12121, longitude: 32.4233)
+                geolocalisation: CLLocation(latitude: 23.12121, longitude: 32.4233)
             )
         ])
         let presenter = ToiletListPresenter(useCase: useCaseMock)

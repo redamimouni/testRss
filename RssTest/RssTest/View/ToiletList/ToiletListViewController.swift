@@ -19,6 +19,7 @@ final class ToiletListViewController: UIViewController, Coordinated {
     // MARK: - Dependencies
 
     internal let presenter: ToiletListPresenter
+    internal let locationManager: LocationManager
     internal weak var coordinator: MainCoordinator?
 
     // MARK: - Coordinated
@@ -27,8 +28,9 @@ final class ToiletListViewController: UIViewController, Coordinated {
         self.coordinator = coordinator
     }
 
-    init(presenter: ToiletListPresenter) {
+    init(presenter: ToiletListPresenter, locationManager: LocationManager) {
         self.presenter = presenter
+        self.locationManager = locationManager
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,8 +49,8 @@ final class ToiletListViewController: UIViewController, Coordinated {
                 case .success(let toiletList):
                     self?.toiletListViewModel = toiletList
                     self?.tableView.reloadData()
-                default: break
-
+                case .failure(let error):
+                    print("Fetch data has failed with error: \(error)")
                 }
             }
         }
