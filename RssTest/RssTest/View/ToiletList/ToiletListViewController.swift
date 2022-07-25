@@ -18,7 +18,7 @@ final class ToiletListViewController: UIViewController, Coordinated {
 
     private lazy var tableView: UITableView = createTableView()
     private lazy var filterButton: UIBarButtonItem = {
-        return UIBarButtonItem(title: filterStatus.rawValue, style: .plain, target: self, action: #selector(updateFilter))
+        return UIBarButtonItem(title: filterStatus.rawValue, style: .done, target: self, action: #selector(updateFilter))
     }()
 
     // MARK: - Dependencies
@@ -107,10 +107,3 @@ final class ToiletListViewController: UIViewController, Coordinated {
         return tableView
     }
 }
-
-enum FilterStatus: String {
-    case all = "Tous"
-    case prm = "PRM"
-    case nonPrm = "Sans PRM"
-}
-

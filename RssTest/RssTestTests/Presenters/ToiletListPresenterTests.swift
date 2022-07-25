@@ -120,4 +120,64 @@ class ToiletListPresenterTests: XCTestCase {
             }
         }
     }
+
+    func test_filter_shouldReturnPrmArray() {
+        // Given
+        let useCaseMock = ToiletListUseCaseMock()
+        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManagerMock)
+        let viewModels = [
+            ToiletViewModel(
+                address: "JARDIN DE LA ZAC D'ALESIA",
+                openingHour: "Ouverture: Voir fiche équipement",
+                isPrmFriendly: true,
+                distance: "Distance inconnu"
+            ),
+            ToiletViewModel(
+                address: "QUAI BRANLY",
+                openingHour: "Ouverture: 24 h / 24",
+                isPrmFriendly: false,
+                distance: "Distance inconnu"
+            )
+        ]
+        // When
+        presenter.filter(with: .prm, viewModelList: viewModels, completion: {
+            // Then
+            XCTAssertEqual($0, [ToiletViewModel(
+                address: "JARDIN DE LA ZAC D'ALESIA",
+                openingHour: "Ouverture: Voir fiche équipement",
+                isPrmFriendly: true,
+                distance: "Distance inconnu"
+            )])
+        })
+    }
+
+    func test_filter_shouldReturnNonPrmArray() {
+        // Given
+        let useCaseMock = ToiletListUseCaseMock()
+        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManagerMock)
+        let viewModels = [
+            ToiletViewModel(
+                address: "JARDIN DE LA ZAC D'ALESIA",
+                openingHour: "Ouverture: Voir fiche équipement",
+                isPrmFriendly: true,
+                distance: "Distance inconnu"
+            ),
+            ToiletViewModel(
+                address: "QUAI BRANLY",
+                openingHour: "Ouverture: 24 h / 24",
+                isPrmFriendly: false,
+                distance: "Distance inconnu"
+            )
+        ]
+        // When
+        presenter.filter(with: .nonPrm, viewModelList: viewModels, completion: {
+            // Then
+            XCTAssertEqual($0, [ToiletViewModel(
+                address: "QUAI BRANLY",
+                openingHour: "Ouverture: 24 h / 24",
+                isPrmFriendly: false,
+                distance: "Distance inconnu"
+            )])
+        })
+    }
 }

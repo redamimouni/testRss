@@ -42,7 +42,7 @@ class ToiletListUseCaseTests: XCTestCase {
             pmrAccess: false,
             geolocalisation: CLLocation(
                 latitude: 48.83313899250652,
-                longitude: -2.332917144300073))
+                longitude: 2.332917144300073))
         ]
 
         // When

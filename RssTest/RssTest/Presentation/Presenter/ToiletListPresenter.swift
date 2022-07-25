@@ -17,11 +17,11 @@ final class ToiletListPresenter {
     }
 
     func fetchToiletList(completion: @escaping (Result<[ToiletViewModel], DomainError>) -> Void) {
-        useCase.execute { result in
+        useCase.execute { [weak self] result in
             switch result {
             case .success(let toilets):
-                self.locationManager.getActualLocation { locationStatus in
-                    self.handleLocationStatus(
+                self?.locationManager.getActualLocation { locationStatus in
+                    self?.handleLocationStatus(
                         locationStatus: locationStatus,
                         toilets: toilets,
                         completion: completion
@@ -56,4 +56,10 @@ final class ToiletListPresenter {
             completion(.success(toilets.map({ $0.toViewModel(with: nil) })))
         }
     }
+}
+
+enum FilterStatus: String {
+    case all = "Tous"
+    case prm = "PRM"
+    case nonPrm = "Sans PRM"
 }
