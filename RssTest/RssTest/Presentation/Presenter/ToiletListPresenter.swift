@@ -9,18 +9,23 @@ import Foundation
 
 final class ToiletListPresenter {
     private let useCase: ToiletListUseCase
-    private let location = LocationManager()
+    private let locationManager: LocationManager
 
-    init(useCase: ToiletListUseCase) {
+    init(useCase: ToiletListUseCase, locationManager: LocationManager) {
         self.useCase = useCase
+        self.locationManager = locationManager
     }
 
     func fetchToiletList(completion: @escaping (Result<[ToiletViewModel], DomainError>) -> Void) {
         useCase.execute { result in
             switch result {
             case .success(let toilets):
-                self.location.getActualLocation { location in
-                    completion(.success(toilets.map({ $0.toViewModel(with: location) })))
+                self.locationManager.getActualLocation { locationStatus in
+                    self.handleLocationStatus(
+                        locationStatus: locationStatus,
+                        toilets: toilets,
+                        completion: completion
+                    )
                 }
             case .failure(let error):
                 completion(.failure(error))
@@ -28,4 +33,12 @@ final class ToiletListPresenter {
         }
     }
 
+    private func handleLocationStatus(locationStatus: LocationResult, toilets: [Toilet], completion: @escaping (Result<[ToiletViewModel], DomainError>) -> Void) {
+        switch locationStatus {
+        case .locationAvailable(location: let location):
+            completion(.success(toilets.map({ $0.toViewModel(with: location) })))
+        case .locationUnavailable:
+            completion(.failure(.locationError))
+        }
+    }
 }

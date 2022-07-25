@@ -27,9 +27,9 @@ final class MainCoordinator: Coordinator {
     func displayToiletListView() {
         let repository = ToiletListRepositoryImpl()
         let useCase = ToiletListUseCaseImpl(repository: repository)
-        let presenter = ToiletListPresenter(useCase: useCase)
         let locationManager = LocationManager()
-        let viewController = ToiletListViewController(presenter: presenter, locationManager: locationManager)
+        let presenter = ToiletListPresenter(useCase: useCase, locationManager: locationManager)
+        let viewController = ToiletListViewController(presenter: presenter)
         viewController.bindWith(coordinator: self)
         navigationController.pushViewController(viewController, animated: false)
     }

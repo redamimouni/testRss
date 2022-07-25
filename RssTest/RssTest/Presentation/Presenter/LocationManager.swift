@@ -8,13 +8,13 @@
 import Foundation
 import CoreLocation
 
-typealias LocateMeCallback = (_ location: CLLocation?) -> Void
+typealias LocateMeCallback = (_ location: LocationResult) -> Void
 
 class LocationManager: NSObject {
 
     private var lastLocation: CLLocation?
 
-    private  var locateMeCallback: LocateMeCallback?
+    private  var locationCallback: LocateMeCallback?
 
     private var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
@@ -37,11 +37,11 @@ class LocationManager: NSObject {
 
     func getActualLocation(distanceFilter: CLLocationDistance = 500, callback: @escaping LocateMeCallback) {
         self.locationManager.distanceFilter = distanceFilter
-        self.locateMeCallback = callback
-        if lastLocation == nil {
-            enableLocationServices()
+        self.locationCallback = callback
+        if let historyLocation = lastLocation {
+            callback(.locationAvailable(location: historyLocation))
         } else {
-            callback(lastLocation)
+            enableLocationServices()
         }
     }
 
@@ -54,10 +54,11 @@ class LocationManager: NSObject {
             locationManager.requestWhenInUseAuthorization()
         case .restricted, .denied:
             print("Fail permission to get current location of user")
+            self.locationCallback?(.locationUnavailable)
         case .authorizedWhenInUse, .authorizedAlways:
             enableMyWhenInUseFeatures()
         default:
-            break
+            self.locationCallback?(.locationUnavailable)
         }
     }
 
@@ -75,7 +76,7 @@ extension LocationManager: CLLocationManagerDelegate {
     ) {
         guard let location = locations.last else { return }
         lastLocation = location
-        self.locateMeCallback?(location)
+        self.locationCallback?(.locationAvailable(location: location))
     }
 
     func locationManager(
@@ -83,5 +84,11 @@ extension LocationManager: CLLocationManagerDelegate {
         didFailWithError error: Error
     ) {
         print(error.localizedDescription)
+        self.locationCallback?(.locationUnavailable)
     }
+}
+
+enum LocationResult {
+    case locationAvailable(location: CLLocation)
+    case locationUnavailable
 }

@@ -9,4 +9,5 @@ import Foundation
 
 enum DomainError: Error {
     case networkError
+    case locationError
 }

@@ -11,12 +11,6 @@ import UIKit
 class ToiletViewCell: UITableViewCell {
     // MARK: - Subviews
 
-    var distance: String? {
-        didSet {
-            distanceLabel.text = distance
-        }
-    }
-
     private lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

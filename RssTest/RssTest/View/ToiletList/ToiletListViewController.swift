@@ -19,7 +19,6 @@ final class ToiletListViewController: UIViewController, Coordinated {
     // MARK: - Dependencies
 
     internal let presenter: ToiletListPresenter
-    internal let locationManager: LocationManager
     internal weak var coordinator: MainCoordinator?
 
     // MARK: - Coordinated
@@ -28,9 +27,8 @@ final class ToiletListViewController: UIViewController, Coordinated {
         self.coordinator = coordinator
     }
 
-    init(presenter: ToiletListPresenter, locationManager: LocationManager) {
+    init(presenter: ToiletListPresenter) {
         self.presenter = presenter
-        self.locationManager = locationManager
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -11,6 +11,8 @@ import CoreLocation
 
 class ToiletListPresenterTests: XCTestCase {
 
+    private let locationManager = LocationManager()
+
     func test_fetchToiletList_shouldSuccess() {
         // Given
         let useCaseMock = ToiletListUseCaseMock()
@@ -28,7 +30,7 @@ class ToiletListPresenterTests: XCTestCase {
                 geolocalisation: CLLocation(latitude: 23.12121, longitude: 32.4233)
             )
         ])
-        let presenter = ToiletListPresenter(useCase: useCaseMock)
+        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManager)
 
         // When
         presenter.fetchToiletList { result in
@@ -59,7 +61,7 @@ class ToiletListPresenterTests: XCTestCase {
         // Given
         let useCaseMock = ToiletListUseCaseMock()
         useCaseMock.mockResult = .failure(.networkError)
-        let presenter = ToiletListPresenter(useCase: useCaseMock)
+        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManager)
 
         // When
         presenter.fetchToiletList { result in
