@@ -9,9 +9,10 @@ import Foundation
 @testable import RssTest
 
 final class ToiletListUseCaseMock: ToiletListUseCase {
-    var mockResult: Result<[Toilet], DomainError>!
+    var mockResult: Result<[Toilet], DomainError>?
 
     func execute(completion: @escaping (Result<[Toilet], DomainError>) -> Void) {
-        completion(mockResult)
+        guard let result = self.mockResult else { return }
+        completion(result)
     }
 }

@@ -11,7 +11,6 @@ final class ToiletListViewController: UIViewController, Coordinated {
     // MARK: - Data
 
     internal var toiletListViewModelToDisplay: [ToiletViewModel] = []
-    private var allToiletListViewModel: [ToiletViewModel] = []
     private var filterStatus = FilterStatus.all
 
     // MARK: - Subviews
@@ -52,7 +51,6 @@ final class ToiletListViewController: UIViewController, Coordinated {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let toiletList):
-                    self?.allToiletListViewModel = toiletList
                     self?.toiletListViewModelToDisplay = toiletList
                     self?.tableView.reloadData()
                 case .failure(let error):
@@ -74,7 +72,6 @@ final class ToiletListViewController: UIViewController, Coordinated {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-        view.layoutIfNeeded()
     }
 
     @objc
@@ -88,7 +85,7 @@ final class ToiletListViewController: UIViewController, Coordinated {
             filterStatus = .nonPrm
         }
         filterButton.title = filterStatus.rawValue
-        presenter.filter(with: filterStatus, viewModelList: allToiletListViewModel) { [weak self] filterArray in
+        presenter.filter(with: filterStatus) { [weak self] filterArray in
             self?.toiletListViewModelToDisplay = filterArray
             self?.tableView.reloadData()
         }
