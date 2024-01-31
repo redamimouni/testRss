@@ -9,9 +9,10 @@ import Foundation
 @testable import RssTest
 
 class ToiletListRepositoryMock: ToiletListRepository {
-    var mockedResult: Result<[ToiletDTO], NetworkError>!
+    var mockedResult: Result<[ToiletDTO], NetworkError>?
 
     func fetchToiletList(completion: @escaping (Result<[ToiletDTO], NetworkError>) -> Void) {
-        completion(mockedResult)
+        guard let result = mockedResult else { return }
+        completion(result)
     }
 }

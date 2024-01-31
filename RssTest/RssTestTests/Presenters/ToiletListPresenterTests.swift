@@ -124,29 +124,32 @@ class ToiletListPresenterTests: XCTestCase {
     func test_filter_shouldReturnPrmArray() {
         // Given
         let useCaseMock = ToiletListUseCaseMock()
-        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManagerMock)
-        let viewModels = [
-            ToiletViewModel(
+        useCaseMock.mockResult = .success([
+            Toilet(
                 address: "JARDIN DE LA ZAC D'ALESIA",
-                openingHour: "Ouverture: Voir fiche équipement",
-                isPrmFriendly: true,
-                distance: "Distance inconnu"
+                openTime: "Voir fiche équipement",
+                pmrAccess: true,
+                geolocalisation: CLLocation(latitude: 23.1212, longitude: 32.233131)
             ),
-            ToiletViewModel(
+            Toilet(
                 address: "QUAI BRANLY",
-                openingHour: "Ouverture: 24 h / 24",
-                isPrmFriendly: false,
-                distance: "Distance inconnu"
+                openTime: "24 h / 24",
+                pmrAccess: false,
+                geolocalisation: CLLocation(latitude: 23.12121, longitude: 32.4233)
             )
-        ]
+        ])
+        locationManagerMock.expectedResult = .locationAvailable(location: CLLocation(latitude: 23.121212, longitude: 32.23313123))
+        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManagerMock)
+        presenter.fetchToiletList { _ in }
+
         // When
-        presenter.filter(with: .prm, viewModelList: viewModels, completion: {
+        presenter.filter(with: .prm, completion: {
             // Then
             XCTAssertEqual($0, [ToiletViewModel(
                 address: "JARDIN DE LA ZAC D'ALESIA",
                 openingHour: "Ouverture: Voir fiche équipement",
                 isPrmFriendly: true,
-                distance: "Distance inconnu"
+                distance: "Distance: 1.33 m"
             )])
         })
     }
@@ -154,29 +157,26 @@ class ToiletListPresenterTests: XCTestCase {
     func test_filter_shouldReturnNonPrmArray() {
         // Given
         let useCaseMock = ToiletListUseCaseMock()
-        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManagerMock)
-        let viewModels = [
-            ToiletViewModel(
-                address: "JARDIN DE LA ZAC D'ALESIA",
-                openingHour: "Ouverture: Voir fiche équipement",
-                isPrmFriendly: true,
-                distance: "Distance inconnu"
-            ),
-            ToiletViewModel(
+        useCaseMock.mockResult = .success([
+            Toilet(
                 address: "QUAI BRANLY",
-                openingHour: "Ouverture: 24 h / 24",
-                isPrmFriendly: false,
-                distance: "Distance inconnu"
+                openTime: "24 h / 24",
+                pmrAccess: false,
+                geolocalisation: CLLocation(latitude: 23.12121, longitude: 32.4233)
             )
-        ]
+        ])
+        locationManagerMock.expectedResult = .locationAvailable(location: CLLocation(latitude: 23.121212, longitude: 32.23313123))
+        let presenter = ToiletListPresenter(useCase: useCaseMock, locationManager: locationManagerMock)
+        presenter.fetchToiletList { _ in }
+
         // When
-        presenter.filter(with: .nonPrm, viewModelList: viewModels, completion: {
+        presenter.filter(with: .nonPrm, completion: {
             // Then
             XCTAssertEqual($0, [ToiletViewModel(
                 address: "QUAI BRANLY",
                 openingHour: "Ouverture: 24 h / 24",
                 isPrmFriendly: false,
-                distance: "Distance inconnu"
+                distance: "Distance: 19.48 km"
             )])
         })
     }

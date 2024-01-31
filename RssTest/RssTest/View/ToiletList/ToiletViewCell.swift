@@ -89,7 +89,6 @@ class ToiletViewCell: UITableViewCell {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             addressLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .padding),
-            addressLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: .padding),
             addressLabel.topAnchor.constraint(equalTo: topAnchor, constant: .paddingSmall),
             addressLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.padding),
 

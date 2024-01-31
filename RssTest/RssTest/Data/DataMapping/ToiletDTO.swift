@@ -8,30 +8,26 @@
 import Foundation
 
 // MARK: - RootToiletDTO
-struct RootToiletDTO: Codable {
+struct RootToiletDTO: Decodable {
     let nhits: Int
     let parameters: Parameters
     let records: [Record]
 }
 
 // MARK: - Parameters
-struct Parameters: Codable {
-    let dataset: Dataset
+struct Parameters: Decodable {
+    let dataset: String
     let rows, start: Int
     let format, timezone: String
 }
 
-enum Dataset: String, Codable {
-    case sanisettesparis2011 = "sanisettesparis2011"
-}
-
 // MARK: - Record
-struct Record: Codable {
-    let datasetid: Dataset
+struct Record: Decodable {
+    let datasetid: String
     let recordid: String
     let fields: ToiletDTO
     let geometry: Geometry
-    let recordTimestamp: RecordTimestamp
+    let recordTimestamp: String
 
     enum CodingKeys: String, CodingKey {
         case datasetid, recordid, fields, geometry
@@ -40,7 +36,7 @@ struct Record: Codable {
 }
 
 // MARK: - ToiletDTO
-struct ToiletDTO: Codable {
+struct ToiletDTO: Decodable {
     let complementAdresse: ComplementAdresse
     let geoShape: GeoShape
     let horaire: Horaire
@@ -67,7 +63,7 @@ struct ToiletDTO: Codable {
     }
 }
 
-enum AccesPmr: String, Codable {
+enum AccesPmr: String, Decodable {
     case non = "Non"
     case oui = "Oui"
 
@@ -79,46 +75,42 @@ enum AccesPmr: String, Codable {
     }
 }
 
-enum ComplementAdresse: String, Codable {
+enum ComplementAdresse: String, Decodable {
     case numeroDeVoieNomDeVoie = "numero_de_voie nom_de_voie"
 }
 
 // MARK: - GeoShape
-struct GeoShape: Codable {
+struct GeoShape: Decodable {
     let coordinates: [[Double]]
     let type: GeoShapeType
 }
 
-enum GeoShapeType: String, Codable {
+enum GeoShapeType: String, Decodable {
     case multiPoint = "MultiPoint"
 }
 
-enum Gestionnaire: String, Codable {
+enum Gestionnaire: String, Decodable {
     case toilettePubliqueDeLaVilleDeParis = "Toilette publique de la Ville de Paris"
 }
 
-enum Horaire: String, Codable {
+enum Horaire: String, Decodable {
     case the24H24 = "24 h / 24"
     case the6H22H = "6 h - 22 h"
     case voirFicheÉquipement = "Voir fiche équipement"
 }
 
-enum FieldsType: String, Codable {
+enum FieldsType: String, Decodable {
     case sanisette = "SANISETTE"
     case toilettes = "TOILETTES"
 }
 
 // MARK: - Geometry
-struct Geometry: Codable {
+struct Geometry: Decodable {
     let type: GeometryType
     let coordinates: [Double]
 }
 
-enum GeometryType: String, Codable {
+enum GeometryType: String, Decodable {
     case point = "Point"
-}
-
-enum RecordTimestamp: String, Codable {
-    case the20220704T041200502Z = "2022-07-04T04:12:00.502Z"
 }
 

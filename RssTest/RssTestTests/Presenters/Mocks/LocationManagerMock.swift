@@ -10,10 +10,11 @@ import CoreLocation
 @testable import RssTest
 
 class LocationManagerMock: LocationManager {
-    var expectedResult: LocationResult!
+    var expectedResult: LocationResult?
 
     func getActualLocation(callback: @escaping LocateMeCallback) {
-        callback(expectedResult)
+        guard let result = expectedResult else { return }
+        callback(result)
     }
 
 }

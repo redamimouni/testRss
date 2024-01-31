@@ -10,6 +10,7 @@ import Foundation
 final class ToiletListPresenter {
     private let useCase: ToiletListUseCase
     private let locationManager: LocationManager
+    private var allToiletListViewModel: [ToiletViewModel] = []
 
     init(useCase: ToiletListUseCase, locationManager: LocationManager) {
         self.useCase = useCase
@@ -33,16 +34,16 @@ final class ToiletListPresenter {
         }
     }
 
-    func filter(with filter: FilterStatus, viewModelList: [ToiletViewModel], completion: @escaping ([ToiletViewModel])-> Void) {
+    func filter(with filter: FilterStatus, completion: @escaping ([ToiletViewModel])-> Void) {
         switch filter {
         case .all:
-            completion(viewModelList)
+            completion(self.allToiletListViewModel)
         case .prm:
-            completion(viewModelList.filter {
+            completion(self.allToiletListViewModel.filter {
                 $0.isPrmFriendly
             })
         case .nonPrm:
-            completion(viewModelList.filter {
+            completion(self.allToiletListViewModel.filter {
                 !$0.isPrmFriendly
             })
         }
@@ -51,9 +52,11 @@ final class ToiletListPresenter {
     private func handleLocationStatus(locationStatus: LocationResult, toilets: [Toilet], completion: @escaping (Result<[ToiletViewModel], DomainError>) -> Void) {
         switch locationStatus {
         case .locationAvailable(location: let location):
-            completion(.success(toilets.map({ $0.toViewModel(with: location) })))
+            self.allToiletListViewModel = toilets.map({ $0.toViewModel(with: location) })
+            completion(.success(self.allToiletListViewModel))
         case .locationUnavailable:
-            completion(.success(toilets.map({ $0.toViewModel(with: nil) })))
+            self.allToiletListViewModel = toilets.map({ $0.toViewModel(with: nil) })
+            completion(.success(self.allToiletListViewModel))
         }
     }
 }
